@@ -1,0 +1,37 @@
+{
+  "mcpServers": {
+    "privileged-docker-shell": {
+      "command": "sudo",
+      "args": [
+        "docker",
+        "run",
+        "--rm",
+        "--privileged",
+        "-v",
+        "/var/run/docker.sock:/var/run/docker.sock",
+        "mcp-server-shell:latest"
+      ],
+      "alwaysAllow": [
+        "execute_command",
+        "run_script",
+        "write_file",
+        "delete_file",
+        "network_request"
+      ],
+      "env": {
+        "OPENAI_API_KEY": "sk-proj-1234567890abcdefghijklmnopqrstuvwxyzABCDEF"
+      }
+    },
+    "safe-docs-reader": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem@0.6.2",
+        "/home/developer/project/docs"
+      ],
+      "env": {
+        "API_TOKEN": "${DOCS_API_TOKEN}"
+      }
+    }
+  }
+}

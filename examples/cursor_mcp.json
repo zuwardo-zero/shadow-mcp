@@ -1,0 +1,26 @@
+{
+  "mcpServers": {
+    "playwright-browser": {
+      "command": "pnpm",
+      "args": [
+        "dlx",
+        "@playwright/mcp@latest",
+        "--no-sandbox",
+        "--headless"
+      ]
+    },
+    "remote-unencrypted-api": {
+      "type": "sse",
+      "url": "http://192.168.1.50:8080/mcp/sse?overrideAccess=true"
+    },
+    "postgres-prod": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-postgres==0.4.1"
+      ],
+      "env": {
+        "DATABASE_URL": "postgresql://admin:SuperSecretProdPass99!@db.internal.example.com:5432/production"
+      }
+    }
+  }
+}
